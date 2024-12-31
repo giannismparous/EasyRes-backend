@@ -17,17 +17,21 @@ const getDocument = async (collectionKey, documentId) => {
 
 const fetchReservationIdCounter = async (collectionKey) => {
   try {
+    console.log('Connecting to Firestore...');
     const sampleRestaurantRef = db.collection(collectionKey);
-    const infoRef = sampleRestaurantRef.doc('info'); // Reference the "info" document
+    console.log(`Collection Ref: ${sampleRestaurantRef.path}`);
+    const infoRef = sampleRestaurantRef.doc('info');
+    console.log(`Fetching info document: ${infoRef.path}`);
     const infoDoc = await infoRef.get();
+    console.log('Info Document:', infoDoc.exists ? infoDoc.data() : 'Not found');
 
     if (infoDoc.exists) {
-      const reservationIdCounter = infoDoc.data().reservation_id_counter; // Extract the counter
+      const reservationIdCounter = infoDoc.data().reservation_id_counter;
       console.log('Reservation ID counter:', reservationIdCounter);
       return reservationIdCounter;
     } else {
-      console.log('Error: "info" document does not exist.');
-      return null; // Return null if the document does not exist
+      console.error('Error: "info" document does not exist.');
+      return null;
     }
   } catch (error) {
     console.error('Error fetching reservation ID counter:', error);
