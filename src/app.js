@@ -15,6 +15,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
 // Base route for reservations
 app.use('/api/reservations', reservationRoutes);
 
