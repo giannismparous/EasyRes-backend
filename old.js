@@ -1,7 +1,5 @@
 
 //FRONT END
-
-
 import {
   signInWithRedirect,
   signInWithPopup,
