@@ -67,7 +67,7 @@ const updateOrderHandler = async (req, res) => {
     } catch (error) {
       res.status(500).json({ error: 'Failed to update order.', details: error.message });
     }
-  };
+};
 
 module.exports = { 
     getOrder,

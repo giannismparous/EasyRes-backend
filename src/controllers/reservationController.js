@@ -165,7 +165,7 @@ const completeReservationHandler = async (req, res) => {
     } catch (error) {
       res.status(500).json({ error: 'Failed to complete reservation.', details: error.message });
     }
-  };
+};
   
 module.exports = { 
     getReservations,
